@@ -39,7 +39,10 @@ function UploadForm({ setSkills, fileInputRef }) {
     formData.append("file", file);
 
     try {
-      const response = await axios.post("http://localhost:8000/upload/", formData);
+      const response = await axios.post(
+        "https://function-bun-production-1c3a.up.railway.app/upload/",
+        formData
+      );
       setSkills(response.data.skills);
       navigate("/skills");
     } catch (err) {
@@ -73,7 +76,7 @@ function UploadForm({ setSkills, fileInputRef }) {
             id="resume-upload"
             accept=".pdf"
             className="hidden"
-            ref={fileInputRef} // ✅ This enables the external trigger from Home.jsx
+            ref={fileInputRef}
             onChange={(e) => setFile(e.target.files[0])}
           />
         </label>
